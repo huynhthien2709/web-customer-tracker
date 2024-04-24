@@ -7,19 +7,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List Customer</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-	crossorigin="anonymous">
+	<link type="text/css" rel="stylesheet"
+		   href="${pageContext.request.contextPath}/resources/css/style.css"/>
 </head>
 <body>
+	<div id="wrapper">
+		<div id="header">
+			<h2>CRM - Customer Relationship Manager</h2>
+		</div>
+	</div>
 
-
-	<div class="container">
-		<div class="row">
+	<div id="container">
+		<div id="content">
 			<div class="col-12">
-				<h2>List Customer</h2>
+			<!-- Lab 10.1 --> 
+			<input type="button" value="Add Customer"
+					onclick="window.location.href='showFormForAdd'; return false;" 
+					class="add-button"
+			/>
+			<br></br>
 
 				<table class="table">
 					<tr>
