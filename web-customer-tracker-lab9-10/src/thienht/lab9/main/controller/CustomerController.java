@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import thienht.lab9.main.dao.ICustomerDAO;
@@ -20,7 +21,8 @@ public class CustomerController {
 	private ICustomerDAO customerDAO;
 	
 	//9.7
-	@RequestMapping("/list")
+//	@RequestMapping("/list")
+	@GetMapping("/list") //9.10
 	public String listCustomer(Model model) {
 		
 		List<Customer> customers = customerDAO.getCustomer();
