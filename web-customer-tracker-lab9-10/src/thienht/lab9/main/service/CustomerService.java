@@ -25,4 +25,19 @@ public class CustomerService implements ICustomerService {
 		return customers;
 	}
 
+	@Override
+	@Transactional
+	public void saveCustomer(Customer customer) {
+		customerDAO.saveCustomer(customer);
+		
+	}
+
+	//10.11
+	@Override
+	@Transactional
+	public Customer getCustomer(int id) {
+		
+		return customerDAO.getCustomer(id);
+	}
+
 }

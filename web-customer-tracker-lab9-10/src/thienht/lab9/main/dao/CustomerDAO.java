@@ -17,16 +17,34 @@ public class CustomerDAO implements ICustomerDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	//9.6
+
+	// 9.6
 	@Override
 	@Transactional
 	public List<Customer> getCustomer() {
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<Customer> listCutomer = currentSession.createQuery("from Customer", Customer.class);
-		
-		List<Customer> customers = listCutomer.getResultList(); 
+		Query<Customer> listCutomer = currentSession.createQuery("from Customer order by lastName", Customer.class);
+
+		List<Customer> customers = listCutomer.getResultList();
 		return customers;
+	}
+
+	// 10.7
+	@Override
+	@Transactional
+	public void saveCustomer(Customer customer) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(customer); //10.13 save/saveOrUpdate
+
+	}
+
+	// 10.11
+	@Override
+	@Transactional
+	public Customer getCustomer(int id) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Customer customer = currentSession.get(Customer.class, id);
+		return customer;
 	}
 
 }
