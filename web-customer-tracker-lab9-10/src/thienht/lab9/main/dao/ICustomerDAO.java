@@ -14,4 +14,7 @@ public interface ICustomerDAO {
 
 	// 10.11
 	public Customer getCustomer(int id);
+	
+	//10.17
+	public void deleteCustomer(int id);
 }

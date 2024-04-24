@@ -40,6 +40,11 @@
 					<!-- Lab 10.9 -->
 					<c:url var="updateLink" value="/customer/showFormUpdate">
 					<c:param name="customerId" value="${tempCustomer.id}"/>
+					
+					<!-- Lab 10.15 -->
+					<c:url var="deleteLink" value="/customer/delete">
+					<c:param name="customerId" value="${tempCustomer.id}"/>						
+					</c:url>
 					</c:url>
 						<tr>
 							<td>${tempCustomer.firstName}</td>
@@ -49,9 +54,9 @@
 							<!-- display the update link -->
 							<a href="${updateLink}">Update</a>
 							|
-							<%-- <!-- Lab 10.16 -->
+							<!-- Lab 10.16 -->
 							<a href="${deleteLink}" 
-							 onclick="if(!(confirm('Are you sure you want to delete this ?'))) return false">Delete</a> --%>
+							 onclick="if(!(confirm('Are you sure you want to delete this ?'))) return false">Delete</a>
 						</td>
 						</tr>
 

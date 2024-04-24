@@ -19,67 +19,59 @@ import thienht.lab9.main.service.ICustomerService;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	
-	//9.7
+	// 9.7
 	/*
-	 * @Autowired 
-	 * private ICustomerDAO customerDAO;
+	 * @Autowired private ICustomerDAO customerDAO;
 	 */
-	
-	//9.12
+
+	// 9.12
 	@Autowired
 	private ICustomerService customerService;
-	
-	//9.7
+
+	// 9.7
 //	@RequestMapping("/list")
 //	@PostMapping("/list") //9.10 not allow
-	@GetMapping("list") //9.10 allow
+	@GetMapping("list") // 9.10 allow
 	public String listCustomer(Model model) {
-		
+
 //		List<Customer> customers = customerDAO.getCustomer();
 		List<Customer> customers = customerService.getCustomer();
 		model.addAttribute("customers", customers);
 		return "list-customer";
 	}
-	
-	
-	//10.2
+
+	// 10.2
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model model) {
-		//10.3
+		// 10.3
 		Customer customer = new Customer();
 		model.addAttribute("customer", customer);
-		
+
 		return "customer-form";
 	}
-	
-	//10.6
+
+	// 10.6
 	@PostMapping("/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") Customer customer) {
 		customerService.saveCustomer(customer);
 		return "redirect:/customer/list";
 	}
-	
-	
-	//10.10
+
+	// 10.10
 	@GetMapping("/showFormUpdate")
 	public String showFormUpdate(@RequestParam("customerId") int id, Model model) {
-		
+
 		Customer customer = customerService.getCustomer(id);
 		model.addAttribute("customer", customer);
-		
+
 		return "customer-form";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	// 10.17
+	@GetMapping("/delete")
+	public String deleteCustomer(@RequestParam("customerId") int id) {
+		customerService.deleteCustomer(id);
+		return "redirect:/customer/list";
+	}
+
 }

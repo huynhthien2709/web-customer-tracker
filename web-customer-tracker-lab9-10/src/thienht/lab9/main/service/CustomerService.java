@@ -40,4 +40,12 @@ public class CustomerService implements ICustomerService {
 		return customerDAO.getCustomer(id);
 	}
 
+	//10.17
+	@Override
+	@Transactional
+	public void deleteCustomer(int id) {
+		customerDAO.deleteCustomer(id);
+		
+	}
+
 }
